@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Backoffice Login</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+    <div class="sidenav">
+    <div class="login-main-text">
+      <h1 style="font-size: 5em; ">Agent</h1>
+      <h2 style="margin-top:5%; margin-left: 5%;"> Page de création des clients</h2>
+      <p style="margin-left:5.6%">Veuillez utiliser ce formulaire pour créer de nouveaux clients.</p>
+      <input type="button" value="déconnexion" (click)="accueil()" class="btn float-right" style="background-color:gray; color: white;">
+    </div>
+    </div>
+
+    <div class="main">
+      <img src="assets\LOGOENSAPAY.png" alt="" style="background-color: white; opacity: 1; padding-top: 10%; padding-left: 40%;" >
+
+        <div class="col-md-6 col-sm-12">
+            <div class="login-form">
+                <form #loginform="ngForm" (ngSubmit)="loginUser()">
+                  <!-- <div class="form-group">
+                      <label for="username">User Name</label>
+                      <input type="text" class="form-control" placeholder="User Name" name="username" [(ngModel)]="user.username" required pattern="^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$"
+                      #username="ngModel"
+                      [class.is-invalid]="username.invalid && username.touched">
+                      <div *ngIf="username.errors && (username.invalid && username.touched)">
+                        <small class="text-danger" *ngIf="username.errors.required">Username is a required field</small>
+                        <small class="text-danger" *ngIf="username.errors.pattern">Enter a valid username</small>
+                      </div>
+                  </div>
+                  <div class="form-group">
+                      <label for="password">Password</label>
+                      <input type="password" class="form-control" placeholder="Password" [(ngModel)]="user.password" required #password="ngModel"
+                      [class.is-invalid]="password.invalid && password.touched">
+                      <small class="text-danger" [class.d-none]="password.valid || password.untouched">Password is a required field</small>
+                  </div> -->
+      
+      
+                  <div class="form-group">
+                      <label for="clientFirstName">Prénom</label>
+                      <input type="text" class="form-control" placeholder="Prénom" name="clientFirstName" [(ngModel)]="subclient.clientFirstName" required #clientFirstName="ngModel"
+                      [class.is-invalid]="clientFirstName.invalid && clientFirstName.touched">
+                      <div *ngIf="clientFirstName.errors && (clientFirstName.invalid && clientFirstName.touched)">
+                        <small class="text-danger" *ngIf="clientFirstName.errors?.required">Votre prénom est obligatoire</small>
+                      </div>
+                  </div>
+                  
+                  <div class="form-group">
+                      <label for="clientLastName">Nom</label>
+                      <input type="text" class="form-control" placeholder="Nom" name="clientLastName" [(ngModel)]="subclient.clientLastName" required #clientLastName="ngModel"
+                      [class.is-invalid]="clientLastName.invalid && clientLastName.touched">
+                      <div *ngIf="clientLastName.errors && (clientLastName.invalid && clientLastName.touched)">
+                        <small class="text-danger" *ngIf="clientLastName.errors?.required">Votre nom est obligatoire</small>
+                      </div>
+                  </div>
+
+                  <div class="form-group">
+                      <label for="clientEmail">Adresse mail</label>
+                      <input type="text" class="form-control" placeholder="Adresse mail" name="clientEmail" [(ngModel)]="subclient.clientEmail" required pattern="^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$"
+                      #clientEmail="ngModel"
+                      [class.is-invalid]="clientEmail.invalid && clientEmail.touched">
+                      <div *ngIf="clientEmail.errors && (clientEmail.invalid && clientEmail.touched)">
+                        <small class="text-danger" *ngIf="clientEmail.errors?.required">Votre adresse mail est obligatoire</small>
+                        <small class="text-danger" *ngIf="clientEmail.errors?.pattern">Veuillez entrer une adresse mail valide</small>
+                      </div>
+                  </div>
+      
+                  <div class="form-group">
+                      <label for="clientTel">Numéro de Téléphone</label>
+                      <input type="text" class="form-control" placeholder="Téléphone" name="clientTel" [(ngModel)]="subclient.clientTel" required #clientTel="ngModel"
+                      [class.is-invalid]="clientTel.invalid && clientTel.touched">
+                      <div *ngIf="clientTel.errors && (clientTel.invalid && clientTel.touched)">
+                        <small class="text-danger" *ngIf="clientTel.errors?.required">Votre numéro de téléphone est obligatoire</small>
+                      </div>
+                  </div>
+      
+                  <div class="form-group">
+                      <label for="agentPatent">Plafond du compte</label>
+                      <input type="text" class="form-control" placeholder="Plafond" name="agentPatent" [(ngModel)]="subclient.clientAccountType" required #clientAccountType="ngModel"
+                      [class.is-invalid]="clientAccountType.invalid && clientAccountType.touched">
+                      <div *ngIf="clientAccountType.errors && (clientAccountType.invalid && clientAccountType.touched)">
+                        <small class="text-danger" *ngIf="clientAccountType.errors.required">Votre numéro de patente est obligatoire</small>
+                      </div>
+                  </div> 
+                  
+      
+                  <button [disabled]="loginform.form.invalid" type="submit" class="btn btn-black">Souscription</button>
+                  <button type="reset" class="btn btn-black float-right">Reprendre</button>
+                </form>
+            </div>
+          </div>
+    </div>
+
+  <!-- <div class="container">
+    <h2>Vertical (basic) form</h2>
+    <form #loginform="ngForm" (ngSubmit)="loginUser()">
+      <small class="text-danger">{{msg}}</small>
+      <div class="form-group">
+        <label for="email">Email:</label>
+        <input type="text" class="form-control" placeholder="Enter username" name="username" [(ngModel)]="user.username" required pattern="^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$"
+        #username="ngModel"
+        [class.is-invalid]="username.invalid && username.touched"
+        >
+        <div *ngIf="username.errors && (username.invalid && username.touched)">
+          <small class="text-danger" *ngIf="username.errors.required">Username is a required field</small>
+          <small class="text-danger" *ngIf="username.errors.pattern">Enter a valid username</small>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="pwd">Password:</label>
+        <input type="password" class="form-control" placeholder="Enter password" name="password" [(ngModel)]="user.password" required #password="ngModel"
+        [class.is-invalid]="password.invalid && password.touched">
+        <small class="text-danger" [class.d-none]="password.valid || password.untouched">Password is a required field</small>
+      </div>
+      <div class="checkbox">
+        <label><input type="checkbox" name="remember"> Remember me</label>
+      </div>
+      <button [disabled]="loginform.form.invalid" type="submit" class="btn btn-info">Login</button>
+      <small class="float-right" [routerLink]="['/registration']">New user ? Register here</small>
+    </form>
+    <!-- <small class="float-right" (click)="gotoregistration()">New user ? Register here</small> 
+  </div> -->
+
+</body>
+</html>

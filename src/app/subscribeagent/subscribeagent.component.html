@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Backoffice Login</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+    <div class="sidenav">
+    <div class="login-main-text">
+      <h1 style="font-size: 5em; ">BackOffice</h1>
+      <h2 style="margin-top:5%; margin-left: 5%;"> Page de création des agents</h2>
+      <p style="margin-left:5.6%">Veuillez utiliser ce formulaire pour créer de nouveaux agents.</p>
+      <input type="button" value="déconnexion" (click)="accueil()" class="btn float-right" style="background-color:gray; color: white;">
+    </div>
+    </div>
+
+    <div class="main">
+
+      <img src="assets\LOGOENSAPAY.png" alt="" style="background-color: white; padding-top: 0%; padding-left: 40%;" >
+        <div class="col-md-6 col-sm-12">
+            <div class="login-form">
+                <form #loginform="ngForm" (ngSubmit)="loginUser()">
+                  <!-- <div class="form-group">
+                      <label for="username">User Name</label>
+                      <input type="text" class="form-control" placeholder="User Name" name="username" [(ngModel)]="user.username" required pattern="^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$"
+                      #username="ngModel"
+                      [class.is-invalid]="username.invalid && username.touched">
+                      <div *ngIf="username.errors && (username.invalid && username.touched)">
+                        <small class="text-danger" *ngIf="username.errors.required">Username is a required field</small>
+                        <small class="text-danger" *ngIf="username.errors.pattern">Enter a valid username</small>
+                      </div>
+                  </div>
+                  <div class="form-group">
+                      <label for="password">Password</label>
+                      <input type="password" class="form-control" placeholder="Password" [(ngModel)]="user.password" required #password="ngModel"
+                      [class.is-invalid]="password.invalid && password.touched">
+                      <small class="text-danger" [class.d-none]="password.valid || password.untouched">Password is a required field</small>
+                  </div> -->
+      
+      
+                  <div class="form-group">
+                      <label for="agentFirstName">Prénom</label>
+                      <input type="text" class="form-control" placeholder="Prénom" name="agentFirstName" [(ngModel)]="subagent.agentFirstName" required #agentFirstName="ngModel"
+                      [class.is-invalid]="agentFirstName.invalid && agentFirstName.touched">
+                      <div *ngIf="agentFirstName.errors && (agentFirstName.invalid && agentFirstName.touched)">
+                        <small class="text-danger" *ngIf="agentFirstName.errors.required">Votre prénom est obligatoire</small>
+                      </div>
+                  </div>
+                  
+                  <div class="form-group">
+                      <label for="agentLastName">Nom</label>
+                      <input type="text" class="form-control" placeholder="Nom" name="agentLastName" [(ngModel)]="subagent.agentLastName" required #agentLastName="ngModel"
+                      [class.is-invalid]="agentLastName.invalid && agentLastName.touched">
+                      <div *ngIf="agentLastName.errors && (agentLastName.invalid && agentLastName.touched)">
+                        <small class="text-danger" *ngIf="agentLastName.errors.required">Votre nom est obligatoire</small>
+                      </div>
+                  </div>
+      
+                  <div class="form-group">
+                      <label for="agentIdNum">Numéro CIN</label>
+                      <input type="text" class="form-control" placeholder="Numéro CIN" name="agentIdNum" [(ngModel)]="subagent.agentIdNum" required #agentIdNum="ngModel"
+                      [class.is-invalid]="agentIdNum.invalid && agentIdNum.touched">
+                      <div *ngIf="agentIdNum.errors && (agentIdNum.invalid && agentIdNum.touched)">
+                        <small class="text-danger" *ngIf="agentIdNum.errors.required">Votre numéro de CIN est obligatoire</small>
+                      </div>
+                  </div>
+      
+                  <div class="form-group">
+                      <label for="agentBirth">Date de naissance</label>
+                      <input type="text" class="form-control" placeholder="Date de naissance" name="agentBirth" [(ngModel)]="subagent.agentBirth" required #agentBirth="ngModel"
+                      [class.is-invalid]="agentBirth.invalid && agentBirth.touched">
+                      <div *ngIf="agentBirth.errors && (agentBirth.invalid && agentBirth.touched)">
+                        <small class="text-danger" *ngIf="agentBirth.errors.required">Votre date de naissance est obligatoire</small>
+                      </div>
+                  </div>
+      
+                  <div class="form-group">
+                      <label for="agentAddress">Adresse</label>
+                      <input type="text" class="form-control" placeholder="Adresse" name="agentAddress" [(ngModel)]="subagent.agentAddress" required #agentAddress="ngModel"
+                      [class.is-invalid]="agentAddress.invalid && agentAddress.touched">
+                      <div *ngIf="agentAddress.errors && (agentAddress.invalid && agentAddress.touched)">
+                        <small class="text-danger" *ngIf="agentAddress.errors.required">Votre adresse est obligatoire</small>
+                      </div>
+                  </div>
+      
+                  <div class="form-group">
+                      <label for="agentEmail">Adresse mail</label>
+                      <input type="text" class="form-control" placeholder="Adresse mail" name="agentEmail" [(ngModel)]="subagent.agentEmail" required pattern="^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$"
+                      #agentEmail="ngModel"
+                      [class.is-invalid]="agentEmail.invalid && agentEmail.touched">
+                      <div *ngIf="agentEmail.errors && (agentEmail.invalid && agentEmail.touched)">
+                        <small class="text-danger" *ngIf="agentEmail.errors.required">Votre adresse mail est obligatoire</small>
+                        <small class="text-danger" *ngIf="username.errors.pattern">Veuillez entrer une adresse mail valide</small>
+                      </div>
+                  </div>
+      
+                  <div class="form-group">
+                      <label for="agentTel">Numéro de Téléphone</label>
+                      <input type="text" class="form-control" placeholder="Téléphone" name="agentTel" [(ngModel)]="subagent.agentTel" required #agentTel="ngModel"
+                      [class.is-invalid]="agentTel.invalid && agentTel.touched">
+                      <div *ngIf="agentTel.errors && (agentTel.invalid && agentTel.touched)">
+                        <small class="text-danger" *ngIf="agentTel.errors.required">Votre numéro de téléphone est obligatoire</small>
+                      </div>
+                  </div>
+      
+                  <div class="form-group">
+                      <label for="agentImmatriculation">Numéro d'immatriculation</label>
+                      <input type="text" class="form-control" placeholder="Numéro d'immatriculation" name="agentImmatriculation" [(ngModel)]="subagent.agentImmatriculation" required #agentImmatriculation="ngModel"
+                      [class.is-invalid]="agentImmatriculation.invalid && agentImmatriculation.touched">
+                      <div *ngIf="agentImmatriculation.errors && (agentImmatriculation.invalid && agentImmatriculation.touched)">
+                        <small class="text-danger" *ngIf="agentImmatriculation.errors.required">Votre numéro d'immatriculation est obligatoire</small>
+                      </div>
+                  </div>
+      
+                  <div class="form-group">
+                      <label for="agentPatent">Numéro de Patente</label>
+                      <input type="text" class="form-control" placeholder="Numéro de patente" name="agentPatent" [(ngModel)]="subagent.agentPatent" required #agentPatent="ngModel"
+                      [class.is-invalid]="agentPatent.invalid && agentPatent.touched">
+                      <div *ngIf="agentPatent.errors && (agentPatent.invalid && agentPatent.touched)">
+                        <small class="text-danger" *ngIf="agentPatent.errors.required">Votre numéro de patente est obligatoire</small>
+                      </div>
+                  </div> 
+                  
+      
+                  <button [disabled]="loginform.form.invalid" type="submit" class="btn btn-black">Souscription</button>
+                  <button type="reset" class="btn btn-black float-right">Reprendre</button>
+                </form>
+            </div>
+          </div>
+    </div>
+
+  <!-- <div class="container">
+    <h2>Vertical (basic) form</h2>
+    <form #loginform="ngForm" (ngSubmit)="loginUser()">
+      <small class="text-danger">{{msg}}</small>
+      <div class="form-group">
+        <label for="email">Email:</label>
+        <input type="text" class="form-control" placeholder="Enter username" name="username" [(ngModel)]="user.username" required pattern="^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$"
+        #username="ngModel"
+        [class.is-invalid]="username.invalid && username.touched"
+        >
+        <div *ngIf="username.errors && (username.invalid && username.touched)">
+          <small class="text-danger" *ngIf="username.errors.required">Username is a required field</small>
+          <small class="text-danger" *ngIf="username.errors.pattern">Enter a valid username</small>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="pwd">Password:</label>
+        <input type="password" class="form-control" placeholder="Enter password" name="password" [(ngModel)]="user.password" required #password="ngModel"
+        [class.is-invalid]="password.invalid && password.touched">
+        <small class="text-danger" [class.d-none]="password.valid || password.untouched">Password is a required field</small>
+      </div>
+      <div class="checkbox">
+        <label><input type="checkbox" name="remember"> Remember me</label>
+      </div>
+      <button [disabled]="loginform.form.invalid" type="submit" class="btn btn-info">Login</button>
+      <small class="float-right" [routerLink]="['/registration']">New user ? Register here</small>
+    </form>
+    <!-- <small class="float-right" (click)="gotoregistration()">New user ? Register here</small> 
+  </div> -->
+
+</body>
+</html>
