@@ -21,7 +21,7 @@ export class SubscribeagentComponent implements OnInit {
     this._service.subscribeagent(this.subagent).subscribe(
       data => {
         if(data.response == 'success'){
-          this._router.navigate(['/loginsuccess'])
+          this._router.navigate(['/subagentsuccess'])
         }
       },
       error => {

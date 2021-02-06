@@ -21,7 +21,7 @@ export class SubscribeclientComponent implements OnInit {
     this._service.subscribeclient(this.subclient).subscribe(
       data => {
         if(data.response == 'success'){
-          this._router.navigate(['/loginsuccess'])
+          this._router.navigate(['/subclientsuccess'])
         }
       },
       error => {
